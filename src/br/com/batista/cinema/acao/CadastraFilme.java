@@ -13,8 +13,8 @@ public class CadastraFilme implements Acao {
 
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Filme filme = new Filme(request.getParameter("nome"));
-
+		Filme filme = new Filme(request.getParameter("nome"), Double.parseDouble(request.getParameter("nota")), Integer.parseInt(request.getParameter("ano")));
+		
 		Banco banco = new Banco();
 		banco.adiciona(filme);
 

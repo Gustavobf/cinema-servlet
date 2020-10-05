@@ -11,16 +11,21 @@
 </head>
 <body>
 
-<a href="/cinema/entrada?acao=Logout">logout</a>
+ Usuario Logado: ${usuarioLogado.login} ||
+<a href="/cinema/entrada?acao=Logout">Sair</a>
 
+ 
 <h3>Lista de Filmes:</h3>
 
 	<ul>
 		<c:forEach items="${filmes}" var="filme">
 			<li>
-				${filme.nome}
+				Nome: ${filme.nome} ||
+				Nota: ${filme.nota} ||
+				Ano: ${filme.ano} ||
 				<a href="/cinema/entrada?acao=RemoveFilme&id=${filme.id}">Excluir</a>
 				<a href="/cinema/entrada?acao=FormularioAlteraFilme&id=${filme.id}">Alterar</a>
+				<hr>
 			</li>
 		</c:forEach>
 	</ul>

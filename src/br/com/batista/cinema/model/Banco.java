@@ -10,10 +10,10 @@ public class Banco {
 	static Integer idFilme = 1;
 
 	static {
-		Filme filme = new Filme("Avengers");
+		Filme filme = new Filme("Avengers", 8.5, 2018);
 		filme.setId(idFilme++);
 		lista.add(filme);
-		Filme filme2 = new Filme("Iron Man");
+		Filme filme2 = new Filme("Iron Man", 7.9, 2016);
 		filme2.setId(idFilme++);
 		lista.add(filme2);
 

@@ -8,7 +8,9 @@
 <body>
 
     <form action="/cinema/entrada?acao=CadastraFilme" method="post">
-        Nome: <input type="text" name="nome">
+        Nome: <input type="text" name="nome"/>
+        Nota: <input type="text" name="nota"/>
+        Ano: <input type="text" name="ano"/>
         <input type="submit">
    
     </form>
