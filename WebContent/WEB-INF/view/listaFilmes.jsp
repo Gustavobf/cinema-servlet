@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<a href="/cinema/entrada?acao=Logout">logout</a>
+
 <h3>Lista de Filmes:</h3>
 
 	<ul>
