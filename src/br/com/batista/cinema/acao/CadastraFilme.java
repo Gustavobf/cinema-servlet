@@ -17,9 +17,10 @@ public class CadastraFilme implements Acao {
 			throws ServletException, IOException {
 
 		try {
+			String sql = "INSERT INTO filme(nome, nota, ano) VALUES(?, ?, ?);";
 			Connection con = DatabaseConnection.initializeDatabase();
 
-			PreparedStatement st = con.prepareStatement("INSERT INTO filme(nome, nota, ano) VALUES(?, ?, ?);");
+			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setString(1, request.getParameter("nome"));
 			st.setDouble(2, Double.parseDouble(request.getParameter("nota")));
