@@ -7,7 +7,6 @@ public class Filme {
 	private Integer ano;
 
 	public Filme(String nome, Double nota, Integer ano) {
-		super();
 		this.nome = nome;
 		this.nota = nota;
 		this.ano = ano;
