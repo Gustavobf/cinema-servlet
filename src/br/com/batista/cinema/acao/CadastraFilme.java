@@ -16,23 +16,24 @@ public class CadastraFilme implements Acao {
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		try {
-			String sql = "INSERT INTO filme(nome, nota, ano) VALUES(?, ?, ?);";
-			Connection con = CinemaDatabaseConnection.initializeDatabase();
+		String sql = "INSERT INTO filme(nome, nota, ano) VALUES(?, ?, ?);";
 
-			PreparedStatement st = con.prepareStatement(sql);
+		try {
+
+			Connection conn = CinemaDatabaseConnection.initializeDatabase();
+			PreparedStatement st = conn.prepareStatement(sql);
 
 			st.setString(1, request.getParameter("nome"));
 			st.setDouble(2, Double.parseDouble(request.getParameter("nota")));
 			st.setInt(3, Integer.parseInt(request.getParameter("ano")));
 
-			st.executeUpdate();
+			st.execute();
 
+			conn.close();
 			st.close();
-			con.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Erro no cadastro: " + e);
 		}
 
 		return "redirect:entrada?acao=ListaFilmes";

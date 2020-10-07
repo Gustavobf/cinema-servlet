@@ -13,23 +13,26 @@ import br.com.batista.cinema.database.CinemaDatabaseConnection;
 public class RemoveFilme implements Acao {
 
 	@Override
-	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String paramId = request.getParameter("id");
-		Integer id = Integer.parseInt(paramId);
-		
+	public String executa(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Integer id = Integer.parseInt(request.getParameter("id"));
+
 		String sql = "DELETE FROM filme WHERE idFilme = ?";
-		
+
 		try {
-			Connection con = CinemaDatabaseConnection.initializeDatabase();
-			PreparedStatement st = con.prepareStatement(sql);
-			
+			Connection conn = CinemaDatabaseConnection.initializeDatabase();
+			PreparedStatement st = conn.prepareStatement(sql);
+
 			st.setInt(1, id);
 
 			st.execute();
-			
+
+			conn.close();
+			st.close();
+
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("Erro na remocao dos dados: " + e);
 		}
 
 		return "redirect:entrada?acao=ListaFilmes";

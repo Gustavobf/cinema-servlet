@@ -12,20 +12,20 @@ public class Filme {
 		this.ano = ano;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Double getNota() {
@@ -43,10 +43,10 @@ public class Filme {
 	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "NomeFilme: " + nome + " NotaFilme: " + nota + " AnoFilme: " + ano;
 	}
-	
+
 }

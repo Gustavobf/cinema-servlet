@@ -24,16 +24,23 @@ public class ControladorFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 
 		String paramAcao = request.getParameter("acao");
-		String nomeClasse = "br.com.batista.cinema.acao." + paramAcao;
-
+		
+		String nomeClasse;
 		String retorno;
+		
+		if (paramAcao.startsWith("Formulario")) {
+			nomeClasse = "br.com.batista.cinema.formularios." + paramAcao;
+		} else {
+			nomeClasse = "br.com.batista.cinema.acao." + paramAcao;
+		}
+
 		
 		try {
 			Class classe = Class.forName(nomeClasse);
 			Acao acao = (Acao) classe.newInstance();
 			retorno = acao.executa(request, response);
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			throw new ServletException(e);
+			throw new ServletException("Erro na criacao da classe: " + e);
 		}
 
 		String[] tipoEndereco = retorno.split(":");

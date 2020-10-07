@@ -15,17 +15,16 @@ public class FormularioAlteraFilme implements Acao {
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String paramId = request.getParameter("id");
 
-		Integer idFilme = Integer.parseInt(paramId);
-		try{
+		Integer idFilme = Integer.parseInt(request.getParameter("id"));
+
+		try {
 
 			Filme filme = FilmeDAO.getById(idFilme);
-			
 			request.setAttribute("filme", filme);
 
 		} catch (Exception e) {
-			System.out.println("Erro no Formulario de alteracao: " + e);
+			System.out.println("Erro no Formulario de alteracao dos dados: " + e);
 		}
 		return "forward:formAlteraFilme.jsp";
 

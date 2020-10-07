@@ -12,10 +12,10 @@ public class Logout implements Acao {
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession sessao = request.getSession();
 		sessao.invalidate();
-		
+
 		return "redirect:entrada?acao=FormularioLogin";
 	}
 

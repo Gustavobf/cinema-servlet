@@ -11,7 +11,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import br.com.batista.cinema.database.CinemaDatabaseConnection;
 import br.com.batista.cinema.model.Filme;
@@ -22,20 +21,13 @@ public class ListaFilmes implements Acao {
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-
-		if (session.getAttribute("usuarioLogado") == null) {
-			return "redirect:entrada?acao=FormularioLogin";
-		}
-
 		List<Filme> filmes = new ArrayList<>();
+		String sql = "SELECT * FROM filme;";
 
 		try {
-			
-			Connection con = CinemaDatabaseConnection.initializeDatabase();
 
-			Statement stmt = con.createStatement();
-			String sql = "SELECT * FROM filme;";
+			Connection conn = CinemaDatabaseConnection.initializeDatabase();
+			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
@@ -48,17 +40,14 @@ public class ListaFilmes implements Acao {
 				filmes.add(filme);
 
 			}
-			
-			rs.close();
-			stmt.close();
-			con.close();
-			
-		} catch (SQLException se) {
-			se.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
 
-		} 
+			conn.close();
+			stmt.close();
+			rs.close();
+
+		} catch (SQLException | ClassNotFoundException se) {
+			System.out.println("Erro na leitura de dados:" + se);
+		}
 
 		request.setAttribute("filmes", filmes);
 		return "forward:listaFilmes.jsp";

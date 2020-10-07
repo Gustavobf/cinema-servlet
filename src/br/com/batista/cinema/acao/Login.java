@@ -18,9 +18,9 @@ public class Login implements Acao {
 
 		String paramLogin = request.getParameter("login");
 		String paramSenha = request.getParameter("senha");
-		
+
 		Usuario usuario = UsuarioDAO.hasUser(paramLogin, paramSenha);
-		
+
 		if (usuario != null) {
 			HttpSession id = request.getSession();
 			id.setAttribute("usuarioLogado", usuario);
@@ -28,7 +28,7 @@ public class Login implements Acao {
 		} else {
 			return "redirect:entrada?acao=FormularioLogin";
 		}
-		
+
 	}
 
 }

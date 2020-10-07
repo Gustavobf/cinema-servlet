@@ -13,7 +13,6 @@ public class FormularioNovoFilme implements Acao {
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		return "forward:formCadastraFilme.jsp";
 	}
 
