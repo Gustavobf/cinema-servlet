@@ -1,4 +1,4 @@
-package br.com.batista.cinema.acao;
+package br.com.batista.cinema.formularios;
 
 import java.io.IOException;
 
@@ -6,7 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.batista.cinema.database.FilmeDAO;
+import br.com.batista.cinema.acao.Acao;
+import br.com.batista.cinema.database.dao.FilmeDAO;
 import br.com.batista.cinema.model.Filme;
 
 public class FormularioAlteraFilme implements Acao {

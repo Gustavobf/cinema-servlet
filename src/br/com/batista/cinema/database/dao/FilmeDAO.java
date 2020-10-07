@@ -1,4 +1,4 @@
-package br.com.batista.cinema.database;
+package br.com.batista.cinema.database.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.batista.cinema.database.CinemaDatabaseConnection;
 import br.com.batista.cinema.model.Filme;
 
 public class FilmeDAO {
@@ -19,7 +20,7 @@ public class FilmeDAO {
 
 		try {
 
-			Connection con = DatabaseConnection.initializeDatabase();
+			Connection con = CinemaDatabaseConnection.initializeDatabase();
 
 			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -52,7 +53,7 @@ public class FilmeDAO {
 
 		try {
 			
-			Connection con = DatabaseConnection.initializeDatabase();
+			Connection con = CinemaDatabaseConnection.initializeDatabase();
 
 			PreparedStatement st = con.prepareStatement(sql);
 

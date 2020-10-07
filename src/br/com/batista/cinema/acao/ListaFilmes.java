@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.batista.cinema.database.DatabaseConnection;
-import br.com.batista.cinema.database.FilmeDAO;
+import br.com.batista.cinema.database.CinemaDatabaseConnection;
 import br.com.batista.cinema.model.Filme;
 
 public class ListaFilmes implements Acao {
@@ -33,7 +32,7 @@ public class ListaFilmes implements Acao {
 
 		try {
 			
-			Connection con = DatabaseConnection.initializeDatabase();
+			Connection con = CinemaDatabaseConnection.initializeDatabase();
 
 			Statement stmt = con.createStatement();
 			String sql = "SELECT * FROM filme;";

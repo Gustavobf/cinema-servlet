@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.batista.cinema.database.DatabaseConnection;
+import br.com.batista.cinema.database.CinemaDatabaseConnection;
 
 public class CadastraFilme implements Acao {
 
@@ -18,7 +18,7 @@ public class CadastraFilme implements Acao {
 
 		try {
 			String sql = "INSERT INTO filme(nome, nota, ano) VALUES(?, ?, ?);";
-			Connection con = DatabaseConnection.initializeDatabase();
+			Connection con = CinemaDatabaseConnection.initializeDatabase();
 
 			PreparedStatement st = con.prepareStatement(sql);
 

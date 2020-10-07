@@ -1,5 +1,5 @@
 CREATE DATABASE crudCinema;
-use crudCinema;
+USE crudCinema;
 
 CREATE TABLE Filme (
    idFilme              INT               PRIMARY KEY AUTO_INCREMENT,

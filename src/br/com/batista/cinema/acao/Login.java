@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.batista.cinema.model.Banco;
+import br.com.batista.cinema.database.dao.UsuarioDAO;
 import br.com.batista.cinema.model.Usuario;
 
 public class Login implements Acao {
@@ -19,8 +19,7 @@ public class Login implements Acao {
 		String paramLogin = request.getParameter("login");
 		String paramSenha = request.getParameter("senha");
 		
-		Banco banco = new Banco();
-		Usuario usuario = banco.existeUsuario(paramLogin, paramSenha);
+		Usuario usuario = UsuarioDAO.hasUser(paramLogin, paramSenha);
 		
 		if (usuario != null) {
 			HttpSession id = request.getSession();
