@@ -43,4 +43,10 @@ public class Filme {
 	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
+	
+	@Override
+	public String toString() {
+		return "NomeFilme: " + nome + " NotaFilme: " + nota + " AnoFilme: " + ano;
+	}
+	
 }

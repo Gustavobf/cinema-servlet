@@ -13,7 +13,7 @@
 		Nome: <input type="text" name="nome" value="${filme.nome}"/>
 		Nota: <input type="text" name="nota" value="${filme.nota}"/>
         Ano: <input type="text" name="ano" value="${filme.ano}"/>
-		 <input type="hidden" nome="id" value="${filme.id}">
+		 <input type="hidden" name="id" value="${filme.id}">
 		<input type="hidden" name="acao" value="AlteraFilme">
 			 <input type="submit">
 	</form>

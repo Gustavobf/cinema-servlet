@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.batista.cinema.database.DatabaseConnection;
+import br.com.batista.cinema.database.FilmeDAO;
 import br.com.batista.cinema.model.Filme;
 
 public class ListaFilmes implements Acao {
@@ -31,6 +32,7 @@ public class ListaFilmes implements Acao {
 		List<Filme> filmes = new ArrayList<>();
 
 		try {
+			
 			Connection con = DatabaseConnection.initializeDatabase();
 
 			Statement stmt = con.createStatement();
@@ -47,9 +49,11 @@ public class ListaFilmes implements Acao {
 				filmes.add(filme);
 
 			}
+			
 			rs.close();
 			stmt.close();
 			con.close();
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} catch (Exception e) {

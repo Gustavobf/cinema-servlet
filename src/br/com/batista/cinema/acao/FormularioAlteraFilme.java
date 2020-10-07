@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.batista.cinema.model.Banco;
+import br.com.batista.cinema.database.FilmeDAO;
 import br.com.batista.cinema.model.Filme;
 
 public class FormularioAlteraFilme implements Acao {
@@ -15,12 +15,17 @@ public class FormularioAlteraFilme implements Acao {
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String paramId = request.getParameter("id");
-		Integer id = Integer.parseInt(paramId);
 
-		Banco banco = new Banco();
-		Filme filme = banco.buscarPeloId(id);
+		Integer idFilme = Integer.parseInt(paramId);
+		try{
 
-		request.setAttribute("filme", filme);
+			Filme filme = FilmeDAO.getById(idFilme);
+			
+			request.setAttribute("filme", filme);
+
+		} catch (Exception e) {
+			System.out.println("Erro no Formulario de alteracao: " + e);
+		}
 		return "forward:formAlteraFilme.jsp";
 
 	}
